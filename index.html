@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <style>
+    /*En este ejemplo, hemos utilizado CSS flexbox para que los cards se muestren horizontalmente en la clase .contenedor. 
+      La propiedad flex-wrap: wrap permite que los cards se envuelvan a la siguiente línea cuando no caben en la pantalla, 
+	  y justify-content: space-between distribuye el espacio horizontalmente entre los elementos.
+      Además, hemos establecido un ancho fijo para cada card utilizando flex-basis para que ocupen aproximadamente un tercio 
+	  del ancho del contenedor, y hemos añadido un margen para separarlos. 
+	  Esto crea una disposición horizontal ordenada de los cards. Ajusta los valores según tus necesidades de diseño.
+    */
+    /* Estilo para la clase "contenedor" */
+    .contenedor {
+      display: flex; /* Muestra los elementos hijos en línea (horizontalmente) */
+      flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente línea cuando no caben en la pantalla */
+      justify-content: space-between; /* Distribuye el espacio horizontalmente entre los elementos */
+    }
+
+    /* Estilo para los cards */
+    .card {
+      margin: 5px; /* Agrega un margen entre los cards */
+	  border: 1px solid #c1c2ca;
+	  padding: 16px;
+	  border-radius: 20px;
+    }
+	
+  </style>
+</head>
+
+<body>
+  <h1>Productos</h1>
+  <div class="contenedor"></div>
+
+  <script>
+    // Función para obtener datos de la API ficticia
+    async function obtenerProductos() {
+      try {
+        // const response = await fetch('https://conexionbdmongo.mapatagbusqueda.repl.co/products');
+	const response = await fetch('https://conexionbdmongo.mapatagbusqueda.repl.co/productsFromGraphQL');     
+        if (!response.ok) {
+          throw new Error('Error en la solicitud');
+        }
+        const data = await response.json();
+        return data;
+      } catch (error) {
+        console.error('Error:', error);
+        return [];
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      const contenedor = document.querySelector(".contenedor");
+      const products = await obtenerProductos();
+
+      let productos = "";
+      // products.test.forEach((product) => {  // para endpoint /products con json en data.js
+      products.forEach((product) => {	       // para endpoint /productsFromGraphQL con json en mongo DB a través de GraphQL  
+        localStorage.setItem(`product_${product.id}`, JSON.stringify(product));
+        productos += `
+          <div class="card" style="width: 18rem;">
+            <img src="${product.image}" style="width: 100px" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-text">${product.title}</h5>
+              <p class="card-text">${product.price}</p>
+              <a href="detalleproducto.html?id=${product.id}" class="btn btn-primary">Ver Detalle</a>
+            </div>
+          </div>
+        `;
+      });
+
+      contenedor.innerHTML = productos; // Agrega el contenido al elemento con la clase "contenedor"
+    });
+  </script>
+</body>
+</html>
