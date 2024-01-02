@@ -34,13 +34,14 @@
   </style>
 </head>
 
-<body>
+<body onload="gapiInit()">
 	
   <div class="g-signin2" data-onsuccess="onSignIn"></div>     
   <script type="text/javascript">
-    $(function(){
-        gapi.load('auth2' , function(){ gapi.auth2.init(); })
-    });
+	  async gapiInit()
+{
+  gapi.load('auth2' , function(){ gapi.auth2.init(); })
+}
   </script>
 	
   <a href="#" onclick="signOut();">Sign out</a>
