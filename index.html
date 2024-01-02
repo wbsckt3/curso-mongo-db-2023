@@ -11,6 +11,7 @@
 <script>
   var gauthinit = function() {
    gapi.load("auth2", function () {
+	console.log('ok auth2')
         gapi.auth2.init({clientId: "980822676255-vntch0t28qbesul2bp5oc1galtoi8a97.apps.googleusercontent.com"})
         .then(() => {
             GoogleAuth = gapi.auth2.GoogleAuth; // Create instance
