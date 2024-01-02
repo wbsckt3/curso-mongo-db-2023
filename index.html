@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width">
   <title>replit</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="980822676255-vntch0t28qbesul2bp5oc1galtoi8a97.apps.googleusercontent.com">
   <style>
     /*En este ejemplo, hemos utilizado CSS flexbox para que los cards se muestren horizontalmente en la clase .contenedor. 
       La propiedad flex-wrap: wrap permite que los cards se envuelvan a la siguiente línea cuando no caben en la pantalla, 
@@ -32,10 +34,23 @@
 </head>
 
 <body>
+	
+  <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
   <h1>Productos</h1>
   <div class="contenedor"></div>
 
   <script>
+
+    function onSignIn(googleUser) {
+	  var profile = googleUser.getBasicProfile();
+	  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+	  console.log('Name: ' + profile.getName());
+	  console.log('Image URL: ' + profile.getImageUrl());
+	  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+	}
+
+	  
     // Función para obtener datos de la API ficticia
     async function obtenerProductos() {
       try {
