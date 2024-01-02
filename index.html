@@ -15,7 +15,12 @@
 	if (typeof gapi.auth2.GoogleAuth !== 'undefined') {
          	console.log("gapi.auth2.GoogleAuth is available!");
     		// Access properties or methods of GoogleAuth as needed
-    		console.log(gapi.auth2.GoogleAuth.isSignedIn.get());
+    		const GoogleAuth = gapi.auth2.getAuthInstance();
+		    if (GoogleAuth) {
+		        console.log(GoogleAuth.isSignedIn.get());
+		    } else {
+		        console.log("GoogleAuth is not available yet");
+		    }
   	} else {
     		console.error("gapi.auth2.GoogleAuth is not available.");
     		// Handle the error case, such as displaying an error message or retrying later
