@@ -12,16 +12,17 @@
   function gauthinit(){
      gapi.load("auth2", function () {
         gapi.auth2.init({ clientId: "980822676255-vntch0t28qbesul2bp5oc1galtoi8a97.apps.googleusercontent.com" })
-        // Check for initialization and sign-in status
-	if (auth2.isSignedIn.get()) {
-	      // Library is initialized and user is signed in
-	      console.log("User is already signed in!");
-	      // Access user information or perform actions as needed
-	} else {
-	      // Library is not initialized or user is not signed in
-	      console.log("User is not signed in.");
-	      // Initiate sign-in flow or display appropriate UI
-	}
+	.then(
+		if (auth2.isSignedIn.get()) {
+		      // Library is initialized and user is signed in
+		      console.log("User is already signed in!");
+		      // Access user information or perform actions as needed
+		} else {
+		      // Library is not initialized or user is not signed in
+		      console.log("User is not signed in.");
+		      // Initiate sign-in flow or display appropriate UI
+		}
+	)
       });
 
   }
