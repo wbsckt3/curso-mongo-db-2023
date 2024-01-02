@@ -52,28 +52,28 @@
      data-logo_alignment="left">
     </div>
 <script>
-    const jwt = require('jsonwebtoken');
+    function handleCredentialResponse(response) {
+      const token = response.credential; // Suponiendo que la credencial contiene el token JWT
 
-function handleCredentialResponse(response) {
-  const token = response.credential; // Assuming the credential contains the JWT token
-  const decodedToken = jwt.decode(token);
+      // Decodificar el token usando jwt-decode
+      const decodedToken = jwt_decode(token);
 
-  // Access the decoded JWT payload
-  if (decodedToken) {
-    console.log("Decoded Token:", decodedToken);
-    
-    // Access specific payload properties
-    console.log("ID: " + decodedToken.sub);
-    console.log('Full Name: ' + decodedToken.name);
-    console.log('Given Name: ' + decodedToken.given_name);
-    console.log('Family Name: ' + decodedToken.family_name);
-    console.log("Image URL: " + decodedToken.picture);
-    console.log("Email: " + decodedToken.email);
-  } else {
-    console.log("Failed to decode the JWT token");
-  }
-}
-</script>
+      // Acceder a la información del token decodificado
+      if (decodedToken) {
+        console.log("Decoded Token:", decodedToken);
+        
+        // Acceder a propiedades específicas del payload
+        console.log("ID: " + decodedToken.sub);
+        console.log('Full Name: ' + decodedToken.name);
+        console.log('Given Name: ' + decodedToken.given_name);
+        console.log('Family Name: ' + decodedToken.family_name);
+        console.log("Image URL: " + decodedToken.picture);
+        console.log("Email: " + decodedToken.email);
+      } else {
+        console.log("No se pudo decodificar el token JWT");
+      }
+    }
+  </script>
 
 	
   <h1>Productos</h1>
