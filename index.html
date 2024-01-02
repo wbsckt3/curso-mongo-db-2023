@@ -11,6 +11,7 @@
 <script>
   function gauthinit(){
      gapi.load("auth2", function () {
+	     
         gapi.auth2.init({ clientId: "980822676255-vntch0t28qbesul2bp5oc1galtoi8a97.apps.googleusercontent.com" })
 	if (typeof gapi.auth2.GoogleAuth !== 'undefined') {
          	console.log("gapi.auth2.GoogleAuth is available!");
@@ -29,18 +30,7 @@
          console.log("gapi.auth2.GoogleAuth is initialized!");
          // Access auth2 properties and methods here
         });
-	if (auth2.isSignedIn.get()) {
-	 var profile = auth2.currentUser.get().getBasicProfile();
-	  console.log('ID: ' + profile.getId());
-	  console.log('Full Name: ' + profile.getName());
-	  console.log('Given Name: ' + profile.getGivenName());
-	  console.log('Family Name: ' + profile.getFamilyName());
-	  console.log('Image URL: ' + profile.getImageUrl());
-	  console.log('Email: ' + profile.getEmail());
-	} else {
-	  // User is not signed in
-	}
-
+	     
       });
   }
 </script>
