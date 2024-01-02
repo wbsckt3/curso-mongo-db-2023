@@ -52,7 +52,7 @@
      data-logo_alignment="left">
     </div>
 	<script>
-		
+		console.log(response)
 function handleCredentialResponse (response) {
     var base64Url = response.split('.')[1];
     var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
