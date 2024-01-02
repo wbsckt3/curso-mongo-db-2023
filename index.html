@@ -6,10 +6,7 @@
   <title>replit</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
   <meta name="google-signin-client_id" content="980822676255-vntch0t28qbesul2bp5oc1galtoi8a97.apps.googleusercontent.com">
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <script>
-     gapi.load('auth2' , function(){ gapi.auth2.init(); })
-  </script>  
+  <script src="https://apis.google.com/js/platform.js" async defer></script> 
   <style>
     /*En este ejemplo, hemos utilizado CSS flexbox para que los cards se muestren horizontalmente en la clase .contenedor. 
       La propiedad flex-wrap: wrap permite que los cards se envuelvan a la siguiente línea cuando no caben en la pantalla, 
@@ -39,6 +36,19 @@
 <body>
 	
   <div class="g-signin2" data-onsuccess="onSignIn"></div>
+  <script>
+     gapi.load('auth2' , function(){ gapi.auth2.init(); })
+  </script> 
+	
+  <a href="#" onclick="signOut();">Sign out</a>
+  <script>
+     function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+	auth2.signOut().then(function () {
+	   console.log('User signed out.');
+	});
+      }
+  </script>
 
   <h1>Productos</h1>
   <div class="contenedor"></div>
