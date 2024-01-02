@@ -12,22 +12,16 @@
   function gauthinit(){
      gapi.load("auth2", function () {
         gapi.auth2.init({ clientId: "980822676255-vntch0t28qbesul2bp5oc1galtoi8a97.apps.googleusercontent.com" })
-	.then(
-		if (auth2.isSignedIn.get()) {
-		      // Library is initialized and user is signed in
-		      console.log("User is already signed in!");
-		      // Access user information or perform actions as needed
-		} else {
-		      // Library is not initialized or user is not signed in
-		      console.log("User is not signed in.");
-		      // Initiate sign-in flow or display appropriate UI
-		}
-	)
+	if (typeof gapi.auth2.GoogleAuth !== 'undefined') {
+         	console.log("gapi.auth2.GoogleAuth is available!");
+    		// Access properties or methods of GoogleAuth as needed
+    		console.log(gapi.auth2.GoogleAuth.currentUser.get().getBasicProfile());
+  	} else {
+    		console.error("gapi.auth2.GoogleAuth is not available.");
+    		// Handle the error case, such as displaying an error message or retrying later
+ 	}
       });
-
   }
-
-
 </script>
   <style>
     /*En este ejemplo, hemos utilizado CSS flexbox para que los cards se muestren horizontalmente en la clase .contenedor. 
