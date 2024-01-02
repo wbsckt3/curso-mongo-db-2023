@@ -20,7 +20,7 @@
     		console.error("gapi.auth2.GoogleAuth is not available.");
     		// Handle the error case, such as displaying an error message or retrying later
  	}
-	gapi.auth2.getAuthInstance().then(function(auth2) {
+	auth2.getAuthInstance().then(function(auth2) {
          console.log("gapi.auth2.GoogleAuth is initialized!");
          // Access auth2 properties and methods here
         });
