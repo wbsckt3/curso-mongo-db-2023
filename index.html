@@ -24,7 +24,7 @@
          console.log("gapi.auth2.GoogleAuth is initialized!");
          // Access auth2 properties and methods here
         });
-	if (auth2.isSignedIn.get()) {
+	if (gapi.auth2.isSignedIn.get()) {
 	  var profile = auth2.currentUser.get().getBasicProfile();
 	  console.log('ID: ' + profile.getId());
 	  console.log('Full Name: ' + profile.getName());
@@ -33,6 +33,11 @@
 	  console.log('Image URL: ' + profile.getImageUrl());
 	  console.log('Email: ' + profile.getEmail());
 	}
+	if (auth2.isSignedIn.get()) {
+  // User is signed in
+} else {
+  // User is not signed in
+}
 
       });
   }
