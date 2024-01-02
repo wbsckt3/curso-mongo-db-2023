@@ -56,8 +56,10 @@
      		// decodeJwtResponse() is a custom function defined by you
      		// to decode the credential response.
 		console.log(response.credential)
-     		const token = jwt_decode(response.credential);
-		const decodedToken = jwt_decode(token);
+     		const token = response.credential; // Suponiendo que la credencial contiene el token JWT
+
+                // Decodificar el token usando jwt-decode
+                const decodedToken = jwt_decode(token); // 
 
       // Acceder a la información del token decodificado
       if (decodedToken) {
