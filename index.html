@@ -56,14 +56,22 @@
      		// decodeJwtResponse() is a custom function defined by you
      		// to decode the credential response.
 		console.log(response.credential)
-     		const responsePayload = decodeJwtResponse(response.credential);
+     		const responsePayload = jwt_decode(response.credential);
 
-     		console.log("ID: " + responsePayload.sub);
-     		console.log('Full Name: ' + responsePayload.name);
-     		console.log('Given Name: ' + responsePayload.given_name);
-     		console.log('Family Name: ' + responsePayload.family_name);
-     		console.log("Image URL: " + responsePayload.picture);
-     		console.log("Email: " + responsePayload.email);
+      // Acceder a la información del token decodificado
+      if (decodedToken) {
+        console.log("Decoded Token:", decodedToken);
+        
+        // Acceder a propiedades específicas del payload
+        console.log("ID: " + decodedToken.sub);
+        console.log('Full Name: ' + decodedToken.name);
+        console.log('Given Name: ' + decodedToken.given_name);
+        console.log('Family Name: ' + decodedToken.family_name);
+        console.log("Image URL: " + decodedToken.picture);
+        console.log("Email: " + decodedToken.email);
+      } else {
+        console.log("No se pudo decodificar el token JWT");
+      }
   	}
   </script>
 
