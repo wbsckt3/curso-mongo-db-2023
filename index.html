@@ -6,7 +6,7 @@
   <title>replit</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.jsdelivr.net/npm/jsonwebtoken@8.5.1/verify.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jwt-decode@4.0.0/build/cjs/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/dist/jwt-decode.min.js"></script>
   <style>
     /*En este ejemplo, hemos utilizado CSS flexbox para que los cards se muestren horizontalmente en la clase .contenedor. 
       La propiedad flex-wrap: wrap permite que los cards se envuelvan a la siguiente línea cuando no caben en la pantalla, 
@@ -56,7 +56,8 @@
      		// decodeJwtResponse() is a custom function defined by you
      		// to decode the credential response.
 		console.log(response.credential)
-     		const responsePayload = jwt_decode(response.credential);
+     		const token = jwt_decode(response.credential);
+		const decodedToken = jwt_decode(token);
 
       // Acceder a la información del token decodificado
       if (decodedToken) {
