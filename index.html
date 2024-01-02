@@ -8,29 +8,26 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <meta name="google-signin-client_id" content="980822676255-vntch0t28qbesul2bp5oc1galtoi8a97.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
-  <script>
-     function init() {
-  	gapi.load('auth2', function() {
-    		/* Ready. Make a call to gapi.auth2.init or some other API */
-		function onSignIn(googleUser) {
-	  		var profile = googleUser.getBasicProfile();
-	  		console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-	  		console.log('Name: ' + profile.getName());
-	  		console.log('Image URL: ' + profile.getImageUrl());
-	  		console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-		}
-   		if (auth2.isSignedIn.get()) {
-	  		var profile = auth2.currentUser.get().getBasicProfile();
-	  		console.log('ID: ' + profile.getId());
-	  		console.log('Full Name: ' + profile.getName());
-	  		console.log('Given Name: ' + profile.getGivenName());
-	  		console.log('Family Name: ' + profile.getFamilyName());
-	  		console.log('Image URL: ' + profile.getImageUrl());
-	  		console.log('Email: ' + profile.getEmail());
-		}
-  	});
-     }
-  </script>
+<script>
+  function init() {
+    gapi.load('auth2', function() {
+      // Initialize the auth2 library with your client ID and API key
+      gapi.auth2.init({
+        clientId: '980822676255-vntch0t28qbesul2bp5oc1galtoi8a97.apps.googleusercontent.com',
+        cookiepolicy: 'single_host_origin',
+      });
+
+      // Now you can access auth2 properties and methods
+      if (auth2.isSignedIn.get()) {
+        console.log("ok")
+      }
+
+      function onSignIn(googleUser) {
+        console.log("ok onSignIn")
+      }
+    });
+  }
+</script>
   <style>
     /*En este ejemplo, hemos utilizado CSS flexbox para que los cards se muestren horizontalmente en la clase .contenedor. 
       La propiedad flex-wrap: wrap permite que los cards se envuelvan a la siguiente línea cuando no caben en la pantalla, 
