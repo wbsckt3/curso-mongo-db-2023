@@ -10,24 +10,18 @@
   <script src="https://apis.google.com/js/platform.js?onload=gauthinit" async defer></script>
 <script>
   window.gauthinit = () =>{
-   gapi.load("auth2", function () {
-        gapi.auth2
-          .init({
-            clientId: "980822676255-vntch0t28qbesul2bp5oc1galtoi8a97.apps.googleusercontent.com"
-          })
-          .then(() => {
-            GoogleAuth = gapi.auth2.getAuthInstance(); // Create instance
-            if (GoogleAuth.isSignedIn.get()) { // If signed in, log name
-	      console.log("logueado")
-              //const profile = GoogleAuth.currentUser.get().getBasicProfile();
-              //console.log("Full Name: " + profile.getName());
-
-              ////DO SAVE DATA IN STORES
- 
-            } else { // Else trigger login
-              GoogleAuth.signIn();
-            }
-          });
+     gapi.load("auth2", function () {
+        gapi.auth2.init({ clientId: "980822676255-vntch0t28qbesul2bp5oc1galtoi8a97.apps.googleusercontent.com" })
+        // Check for initialization and sign-in status
+	if (auth2.isSignedIn.get()) {
+	      // Library is initialized and user is signed in
+	      console.log("User is already signed in!");
+	      // Access user information or perform actions as needed
+	} else {
+	      // Library is not initialized or user is not signed in
+	      console.log("User is not signed in.");
+	      // Initiate sign-in flow or display appropriate UI
+	}
       });
 
   }
