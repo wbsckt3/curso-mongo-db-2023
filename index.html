@@ -13,7 +13,8 @@
    gapi.load("auth2", function () {
 	console.log('ok auth2')
         gapi.auth2.init({clientId: "980822676255-vntch0t28qbesul2bp5oc1galtoi8a97.apps.googleusercontent.com"})
-        .then(() => {
+	  console.log(gapi.auth2.GoogleAuth)
+        /*.then(() => {
             GoogleAuth = gapi.auth2.GoogleAuth; // Create instance
             if (GoogleAuth.isSignedIn.get()) { // If signed in, log name
               const profile = GoogleAuth.currentUser.get().getBasicProfile();
@@ -24,7 +25,7 @@
             } else { // Else trigger login
               GoogleAuth.signIn();
             }
-        });
+        });*/
    });
 
 }
