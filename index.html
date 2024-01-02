@@ -37,35 +37,7 @@
          data-client_id="980822676255-vntch0t28qbesul2bp5oc1galtoi8a97.apps.googleusercontent.com"
          data-callback="handleCredentialResponse">
     </div>
-    <div class="g_id_signin" data-type="standard"></div>
     <div class="g-signin2" data-onsuccess="onSignIn"></div>     
-
-<script>
- function init(){
-     gapi.load("auth2", function () {
-	     
-        gapi.auth2.init({ clientId: "980822676255-vntch0t28qbesul2bp5oc1galtoi8a97.apps.googleusercontent.com" })
-	if (typeof gapi.auth2.GoogleAuth !== 'undefined') {
-         	console.log("gapi.auth2.GoogleAuth is available!");
-    		// Access properties or methods of GoogleAuth as needed
-    		const GoogleAuth = gapi.auth2.getAuthInstance();
-		    if (GoogleAuth) {
-		        console.log(GoogleAuth.isSignedIn.get());
-		    } else {
-		        console.log("GoogleAuth is not available yet");
-		    }
-  	} else {
-    		console.error("gapi.auth2.GoogleAuth is not available.");
-    		// Handle the error case, such as displaying an error message or retrying later
- 	}
-	gapi.auth2.getAuthInstance().then(function(auth2) {
-         console.log("gapi.auth2.GoogleAuth is initialized!");
-         // Access auth2 properties and methods here
-        });
-	     
-      });
-  }
-</script>
 	
   <h1>Productos</h1>
   <div class="contenedor"></div>
