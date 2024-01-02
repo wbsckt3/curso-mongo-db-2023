@@ -9,7 +9,7 @@
   <meta name="google-signin-client_id" content="980822676255-vntch0t28qbesul2bp5oc1galtoi8a97.apps.googleusercontent.com">
   <script src="https://apis.google.com/js/platform.js?onload=gauthinit" async defer></script>
 <script>
-  window.gauthinit = () =>{
+  var gauthinit = function() {
    gapi.load("auth2", function () {
         gapi.auth2.init({clientId: "980822676255-vntch0t28qbesul2bp5oc1galtoi8a97.apps.googleusercontent.com"})
         .then(() => {
